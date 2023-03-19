@@ -15,7 +15,7 @@ list=$(echo $xml | sed -e "s/<?xml version=\"1.0\" encoding=\"UTF-8\"?>//g" | xm
 serialize_path=$(echo $path | sed -e "s/\//\\\\\//g")
 for item in $list; do
   cur_path=$(echo $item | sed -e "s/$serialize_path//g")
-  curl -s -u $user:$pass $target$item --create-dirs -o $tmp$cur_path
+  curl -s -u $user:$pass $target$item --create-dirs -o $tmp/$cur_path
 done
 
 chmod +x $tmp/$entrypoint
